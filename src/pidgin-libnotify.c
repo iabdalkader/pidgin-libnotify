@@ -484,6 +484,9 @@ notify_new_mail (const gchar *subject,
     body = g_strdup_printf ("From %s", from);
     tr_body = truncate_escape_string (body, 60);
 
+    if (tr_body == NULL)
+        return;
+
     notification = notify_notification_new ("New Mail", tr_body, NULL);
     /*
        purple_debug_info (PLUGIN_ID, "notify(), new: "
